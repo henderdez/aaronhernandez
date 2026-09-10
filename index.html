@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aaron [Last Name] — Mechanical Engineering</title>
+<meta name="description" content="Mechanical engineering student portfolio — coursework, projects, and professional experience.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F5F4EF;
+    --paper-deep:#EFEDE4;
+    --graphite:#1B1E24;
+    --graphite-soft:#565A63;
+    --blueprint:#24476B;
+    --blueprint-light:#4C6C8C;
+    --rust:#C1571F;
+    --line:#D4D1C6;
+    --line-strong:#B3AF9F;
+    --max:920px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+
+  body{
+    margin:0;
+    background:
+      repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(27,30,36,0.035) 40px),
+      repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(27,30,36,0.035) 40px),
+      var(--paper);
+    color:var(--graphite);
+    font-family:'IBM Plex Sans', sans-serif;
+    font-weight:400;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  a{color:var(--blueprint);}
+  a:focus-visible, button:focus-visible{outline:2px solid var(--rust); outline-offset:3px;}
+
+  .mono{
+    font-family:'IBM Plex Mono', monospace;
+    letter-spacing:0.02em;
+  }
+
+  .wrap{
+    max-width:var(--max);
+    margin:0 auto;
+    padding:0 28px;
+  }
+
+  /* ---------- Title block header ---------- */
+  .sheet{
+    position:relative;
+    padding-top:34px;
+  }
+  .tick{
+    position:absolute;
+    width:18px; height:18px;
+    border-color:var(--graphite);
+    border-style:solid;
+    opacity:0.55;
+  }
+  .tick.tl{ top:14px; left:14px; border-width:1.5px 0 0 1.5px; }
+  .tick.tr{ top:14px; right:14px; border-width:1.5px 1.5px 0 0; }
+  .tick.bl{ bottom:14px; left:14px; border-width:0 0 1.5px 1.5px; }
+  .tick.br{ bottom:14px; right:14px; border-width:0 1.5px 1.5px 0; }
+
+  .titleblock{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    border-bottom:1.5px solid var(--graphite);
+    padding-bottom:18px;
+    margin-bottom:10px;
+    flex-wrap:wrap;
+    gap:12px;
+  }
+  .titleblock h1{
+    font-size:clamp(2rem, 5vw, 2.9rem);
+    font-weight:700;
+    margin:0 0 6px 0;
+    letter-spacing:-0.01em;
+  }
+  .titleblock .role{
+    font-size:1.05rem;
+    color:var(--blueprint);
+    font-weight:500;
+  }
+  .titleblock .meta{
+    text-align:right;
+    font-size:0.78rem;
+    color:var(--graphite-soft);
+    line-height:1.7;
+  }
+  .titleblock .meta div span{color:var(--graphite); font-weight:500;}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    display:grid;
+    grid-template-columns:1.1fr 0.9fr;
+    gap:40px;
+    align-items:center;
+    padding:44px 0 56px 0;
+  }
+  .hero p{
+    font-size:1.08rem;
+    color:var(--graphite-soft);
+    max-width:46ch;
+  }
+  .hero-figure{
+    position:relative;
+  }
+  .hero-figure svg{ width:100%; height:auto; overflow:visible; }
+  .draw-line{
+    stroke-dasharray:900;
+    stroke-dashoffset:900;
+    animation:draw 2.2s ease-out forwards;
+  }
+  .draw-line.d2{ animation-delay:0.25s; }
+  .draw-line.d3{ animation-delay:0.5s; }
+  @keyframes draw{ to{ stroke-dashoffset:0; } }
+  @media (prefers-reduced-motion: reduce){
+    .draw-line{ animation:none; stroke-dashoffset:0; }
+  }
+
+  .stat-row{
+    display:flex;
+    gap:28px;
+    margin-top:22px;
+    flex-wrap:wrap;
+  }
+  .stat{
+    border-left:2px solid var(--rust);
+    padding-left:10px;
+  }
+  .stat .num{ font-family:'IBM Plex Mono', monospace; font-size:1.3rem; font-weight:500; }
+  .stat .label{ font-size:0.75rem; color:var(--graphite-soft); }
+
+  /* ---------- Sections ---------- */
+  section{ padding:38px 0; border-top:1px solid var(--line); }
+  .section-head{
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+    margin-bottom:26px;
+  }
+  .section-head h2{
+    font-size:1.5rem;
+    margin:0;
+    font-weight:600;
+  }
+  .section-head .tag{
+    font-size:0.75rem;
+    color:var(--graphite-soft);
+  }
+
+  /* ---------- Project entries ---------- */
+  .project{
+    display:grid;
+    grid-template-columns:1fr 240px;
+    gap:24px;
+    padding:22px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .project:last-child{ border-bottom:none; }
+  .project h3{
+    font-size:1.12rem;
+    margin:0 0 8px 0;
+    font-weight:600;
+  }
+  .project p{
+    margin:0;
+    color:var(--graphite-soft);
+    font-size:0.96rem;
+    max-width:52ch;
+  }
+  .project .link{
+    display:inline-block;
+    margin-top:10px;
+    font-size:0.85rem;
+    text-decoration:none;
+    border-bottom:1px solid var(--blueprint-light);
+  }
+  .project .spec{
+    font-size:0.76rem;
+    color:var(--blueprint);
+    line-height:1.8;
+  }
+  .project .spec .k{ color:var(--graphite-soft); }
+
+  @media (max-width:640px){
+    .project{ grid-template-columns:1fr; }
+  }
+
+  /* ---------- Skills / spec table ---------- */
+  .spectable{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:0 48px;
+  }
+  .spectable h4{
+    font-size:0.78rem;
+    color:var(--graphite-soft);
+    margin:0 0 12px 0;
+    font-weight:500;
+  }
+  .spectable ul{
+    list-style:none;
+    margin:0 0 28px 0;
+    padding:0;
+  }
+  .spectable li{
+    display:flex;
+    justify-content:space-between;
+    padding:9px 0;
+    border-bottom:1px solid var(--line);
+    font-size:0.92rem;
+  }
+  .spectable li span.v{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.78rem;
+    color:var(--graphite-soft);
+  }
+  @media (max-width:640px){
+    .spectable{ grid-template-columns:1fr; }
+  }
+
+  /* ---------- Experience ---------- */
+  .exp-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    flex-wrap:wrap;
+    gap:6px;
+    margin-bottom:14px;
+  }
+  .exp-head h3{ margin:0; font-size:1.12rem; font-weight:600; }
+  .exp-head .dates{ font-size:0.78rem; color:var(--graphite-soft); }
+  .exp ul{ margin:0; padding-left:20px; color:var(--graphite-soft); font-size:0.94rem; }
+  .exp li{ margin-bottom:8px; }
+
+  /* ---------- Footer / contact ---------- */
+  footer{
+    border-top:1.5px solid var(--graphite);
+    padding:30px 0 50px 0;
+    margin-top:10px;
+  }
+  .contact-grid{
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:20px;
+  }
+  .contact-grid a{
+    display:block;
+    text-decoration:none;
+    font-size:0.95rem;
+    margin-bottom:6px;
+  }
+  .contact-grid .label{
+    font-size:0.72rem;
+    color:var(--graphite-soft);
+    margin-bottom:8px;
+  }
+  .footnote{
+    margin-top:26px;
+    font-size:0.72rem;
+    color:var(--graphite-soft);
+  }
+</style>
+</head>
+<body>
+
+<div class="sheet wrap">
+  <span class="tick tl" aria-hidden="true"></span>
+  <span class="tick tr" aria-hidden="true"></span>
+
+  <div class="titleblock">
+    <div>
+      <h1>Aaron <span style="color:var(--graphite-soft); font-weight:400;">[Last Name]</span></h1>
+      <div class="role">Mechanical Engineering Student — CCNY</div>
+    </div>
+    <div class="meta mono">
+      <div>SHEET <span>01 / 01</span></div>
+      <div>REV <span>2026</span></div>
+      <div>LOCATION <span>New York, NY</span></div>
+    </div>
+  </div>
+
+  <!-- ---------- HERO ---------- -->
+  <div class="hero">
+    <div>
+      <p>I build and analyze mechanical systems — from thermodynamic cycle work in the classroom to automation tools that run on their own. Currently studying mechanical engineering at CCNY, with a working habit of documenting, measuring, and shipping things properly.</p>
+      <div class="stat-row">
+        <div class="stat">
+          <div class="num mono">4</div>
+          <div class="label">Core courses this term</div>
+        </div>
+        <div class="stat">
+          <div class="num mono">3</div>
+          <div class="label">Automation builds shipped</div>
+        </div>
+        <div class="stat">
+          <div class="num mono">1099</div>
+          <div class="label">Contractor experience</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-figure" aria-hidden="true">
+      <svg viewBox="0 0 320 260" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- turbocharger-style cross-section, abstracted -->
+        <circle class="draw-line" cx="160" cy="120" r="70" stroke="#24476B" stroke-width="1.6"/>
+        <circle class="draw-line d2" cx="160" cy="120" r="38" stroke="#1B1E24" stroke-width="1.6"/>
+        <circle cx="160" cy="120" r="6" fill="#C1571F"/>
+        <line class="draw-line d2" x1="160" y1="50" x2="160" y2="18" stroke="#565A63" stroke-width="1"/>
+        <line class="draw-line d2" x1="160" y1="190" x2="160" y2="222" stroke="#565A63" stroke-width="1"/>
+        <line class="draw-line d3" x1="90" y1="120" x2="18" y2="120" stroke="#565A63" stroke-width="1"/>
+        <line class="draw-line d3" x1="230" y1="120" x2="302" y2="120" stroke="#565A63" stroke-width="1"/>
+        <text x="8" y="112" class="mono" font-size="9" fill="#565A63">Ø140</text>
+        <text x="264" y="112" class="mono" font-size="9" fill="#565A63">Ø76</text>
+        <path class="draw-line d3" d="M60 210 Q160 250 260 210" stroke="#B3AF9F" stroke-width="1" stroke-dasharray="4 4"/>
+      </svg>
+    </div>
+  </div>
+
+  <!-- ---------- PROJECTS ---------- -->
+  <section id="projects">
+    <div class="section-head">
+      <h2>Projects</h2>
+      <span class="tag mono">SELECTED WORK</span>
+    </div>
+
+    <div class="project">
+      <div>
+        <h3>Turbocharger Thermodynamic Analysis</h3>
+        <p>Term paper examining turbocharger performance through exergy and entropy analysis, working through T-s and P-v diagrams and steam-table interpolation to characterize real-cycle losses.</p>
+        <a class="link" href="#">View writeup →</a>
+      </div>
+      <div class="spec">
+        <div><span class="k">Course:</span> Thermodynamics, ENGR 230</div>
+        <div><span class="k">Method:</span> Exergy / entropy analysis</div>
+        <div><span class="k">Reference:</span> Çengel &amp; Boles</div>
+      </div>
+    </div>
+
+    <div class="project">
+      <div>
+        <h3>Customer Pricing Analyzer</h3>
+        <p>n8n workflow that reads live customer data from Google Sheets, runs pricing analysis, and sends formatted HTML summary emails automatically — no manual pull required.</p>
+        <a class="link" href="#">View workflow →</a>
+      </div>
+      <div class="spec">
+        <div><span class="k">Stack:</span> n8n, Google Sheets, Gmail</div>
+        <div><span class="k">Trigger:</span> Scheduled</div>
+        <div><span class="k">Output:</span> HTML email report</div>
+      </div>
+    </div>
+
+    <div class="project">
+      <div>
+        <h3>F1 Race Prediction Emailer</h3>
+        <p>Automated prediction pipeline pulling live race data from the Jolpica/Ergast API, generating a written forecast with an AI model, and emailing it ahead of each race weekend.</p>
+        <a class="link" href="#">View workflow →</a>
+      </div>
+      <div class="spec">
+        <div><span class="k">Stack:</span> n8n, Jolpica API, Groq</div>
+        <div><span class="k">Cadence:</span> Weekly, race-linked</div>
+        <div><span class="k">Output:</span> Email forecast</div>
+      </div>
+    </div>
+
+    <div class="project">
+      <div>
+        <h3>Statics — Force &amp; Load Studies</h3>
+        <p>Coursework set covering force-couple systems, distributed loads, and centroid calculations via the Pappus-Guldinus theorems, applied to multi-body static equilibrium problems.</p>
+        <a class="link" href="#">View select problems →</a>
+      </div>
+      <div class="spec">
+        <div><span class="k">Course:</span> Statics, ME 24600</div>
+        <div><span class="k">Topics:</span> Centroids, distributed loads</div>
+        <div><span class="k">Tool:</span> TI-Nspire CX</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ---------- SKILLS ---------- -->
+  <section id="skills">
+    <div class="section-head">
+      <h2>Coursework &amp; Tools</h2>
+      <span class="tag mono">SPEC SHEET</span>
+    </div>
+
+    <div class="spectable">
+      <div>
+        <h4>ENGINEERING</h4>
+        <ul>
+          <li>Thermodynamics <span class="v">CYCLES · EXERGY</span></li>
+          <li>Statics <span class="v">EQUILIBRIUM</span></li>
+          <li>Physics 208 <span class="v">OPTICS · CIRCUITS</span></li>
+          <li>Multivariable Calculus <span class="v">VECTOR FIELDS</span></li>
+          <li>Fluid Statics <span class="v">MANOMETRY</span></li>
+        </ul>
+      </div>
+      <div>
+        <h4>TOOLS &amp; AUTOMATION</h4>
+        <ul>
+          <li>n8n <span class="v">WORKFLOWS</span></li>
+          <li>Google Sheets / Gmail API <span class="v">INTEGRATION</span></li>
+          <li>SerpAPI <span class="v">DATA</span></li>
+          <li>TI-Nspire CX <span class="v">CALC</span></li>
+          <li>Word / Technical Writing <span class="v">DOCUMENTATION</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ---------- EXPERIENCE ---------- -->
+  <section id="experience">
+    <div class="section-head">
+      <h2>Professional Experience</h2>
+      <span class="tag mono">FIELD WORK</span>
+    </div>
+
+    <div class="exp">
+      <div class="exp-head">
+        <h3>Sales Representative — Aptive Environmental</h3>
+        <div class="dates mono">Hawthorne &amp; Rockland County, NY</div>
+      </div>
+      <ul>
+        <li>Manage a full door-to-door sales territory independently, from prospecting through close, in a role that runs entirely on self-set daily targets.</li>
+        <li>Communicate technical service details to homeowners clearly and under time pressure — the same skill that carries over to writing up engineering results for a non-specialist reader.</li>
+        <li>Prior 1099 contractor experience, with working familiarity with self-employment tax and ownership of your own performance.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ---------- CONTACT / FOOTER ---------- -->
+  <footer>
+    <span class="tick bl" aria-hidden="true"></span>
+    <span class="tick br" aria-hidden="true"></span>
+    <div class="contact-grid">
+      <div>
+        <div class="label mono">EMAIL</div>
+        <a href="mailto:your.email@example.com">your.email@example.com</a>
+      </div>
+      <div>
+        <div class="label mono">LINKEDIN</div>
+        <a href="#">linkedin.com/in/yourname</a>
+      </div>
+      <div>
+        <div class="label mono">GITHUB</div>
+        <a href="#">github.com/yourname</a>
+      </div>
+      <div>
+        <div class="label mono">RESUME</div>
+        <a href="#">Download PDF ↓</a>
+      </div>
+    </div>
+    <div class="footnote mono">DRAWN BY AARON · CCNY MECHANICAL ENGINEERING · 2026</div>
+  </footer>
+</div>
+
+</body>
+</html>
