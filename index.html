@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Aaron Hernandez — Mechanical Engineering</title>
-<meta name="description" content="Mechanical engineering student portfolio — coursework, projects, and professional experience.">
+<title id="page-title">Portfolio</title>
+<meta id="page-description" name="description" content="">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -52,6 +52,29 @@
     padding:0 28px;
   }
 
+  .nav{
+    display:flex;
+    justify-content:flex-end;
+    align-items:center;
+    gap:18px;
+    padding:8px 0 16px;
+    font-size:0.72rem;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    font-family:'IBM Plex Mono', monospace;
+  }
+  .nav a{
+    text-decoration:none;
+    color:var(--graphite-soft);
+  }
+  .nav a.primary{
+    color:var(--paper);
+    background:var(--graphite);
+    border:1px solid var(--graphite);
+    padding:8px 12px;
+    border-radius:999px;
+  }
+
   /* ---------- Title block header ---------- */
   .sheet{
     position:relative;
@@ -82,13 +105,14 @@
   .titleblock h1{
     font-size:clamp(2rem, 5vw, 2.9rem);
     font-weight:700;
-    margin:0 0 6px 0;
+    margin:0;
     letter-spacing:-0.01em;
   }
   .titleblock .role{
     font-size:1.05rem;
     color:var(--blueprint);
     font-weight:500;
+    margin-top:6px;
   }
   .titleblock .meta{
     text-align:right;
@@ -111,9 +135,36 @@
     color:var(--graphite-soft);
     max-width:46ch;
   }
-  .hero-figure{
-    position:relative;
+  .hero-actions{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+    margin-top:22px;
   }
+  .button{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    padding:11px 18px;
+    border-radius:999px;
+    text-decoration:none;
+    font-size:0.8rem;
+    font-weight:600;
+    letter-spacing:0.02em;
+    transition:transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .button:hover{ transform:translateY(-1px); }
+  .button.primary{
+    background:var(--blueprint);
+    color:#fff;
+    box-shadow:0 10px 22px rgba(36,71,107,0.18);
+  }
+  .button.secondary{
+    background:transparent;
+    color:var(--graphite);
+    border:1px solid var(--graphite);
+  }
+  .hero-figure{ position:relative; }
   .hero-figure svg{ width:100%; height:auto; overflow:visible; }
   .draw-line{
     stroke-dasharray:900;
@@ -148,15 +199,8 @@
     justify-content:space-between;
     margin-bottom:26px;
   }
-  .section-head h2{
-    font-size:1.5rem;
-    margin:0;
-    font-weight:600;
-  }
-  .section-head .tag{
-    font-size:0.75rem;
-    color:var(--graphite-soft);
-  }
+  .section-head h2{ font-size:1.5rem; margin:0; font-weight:600; }
+  .section-head .tag{ font-size:0.75rem; color:var(--graphite-soft); }
 
   /* ---------- Project entries ---------- */
   .project{
@@ -167,16 +211,36 @@
     border-bottom:1px solid var(--line);
   }
   .project:last-child{ border-bottom:none; }
-  .project h3{
-    font-size:1.12rem;
-    margin:0 0 8px 0;
-    font-weight:600;
+  .project h3{ font-size:1.12rem; margin:0 0 8px 0; font-weight:600; }
+  .project p{ margin:0; color:var(--graphite-soft); font-size:0.96rem; max-width:52ch; }
+  .project-main{ display:grid; gap:16px; }
+  .project-media{
+    width:100%;
+    aspect-ratio:16 / 10;
+    border:1px solid var(--line-strong);
+    background:
+      linear-gradient(135deg, rgba(36,71,107,0.06), rgba(193,87,31,0.06)),
+      var(--paper-deep);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
   }
-  .project p{
-    margin:0;
+  .project-media img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+  }
+  .project-media .placeholder{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.7rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
     color:var(--graphite-soft);
-    font-size:0.96rem;
-    max-width:52ch;
+    padding:10px 14px;
+    border:1px solid var(--line-strong);
+    background:rgba(255,255,255,0.25);
   }
   .project .link{
     display:inline-block;
@@ -185,11 +249,7 @@
     text-decoration:none;
     border-bottom:1px solid var(--blueprint-light);
   }
-  .project .spec{
-    font-size:0.76rem;
-    color:var(--blueprint);
-    line-height:1.8;
-  }
+  .project .spec{ font-size:0.76rem; color:var(--blueprint); line-height:1.8; }
   .project .spec .k{ color:var(--graphite-soft); }
 
   @media (max-width:640px){
@@ -197,22 +257,9 @@
   }
 
   /* ---------- Skills / spec table ---------- */
-  .spectable{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:0 48px;
-  }
-  .spectable h4{
-    font-size:0.78rem;
-    color:var(--graphite-soft);
-    margin:0 0 12px 0;
-    font-weight:500;
-  }
-  .spectable ul{
-    list-style:none;
-    margin:0 0 28px 0;
-    padding:0;
-  }
+  .spectable{ display:grid; grid-template-columns:1fr 1fr; gap:0 48px; }
+  .spectable h4{ font-size:0.78rem; color:var(--graphite-soft); margin:0 0 12px 0; font-weight:500; }
+  .spectable ul{ list-style:none; margin:0 0 28px 0; padding:0; }
   .spectable li{
     display:flex;
     justify-content:space-between;
@@ -220,16 +267,12 @@
     border-bottom:1px solid var(--line);
     font-size:0.92rem;
   }
-  .spectable li span.v{
-    font-family:'IBM Plex Mono', monospace;
-    font-size:0.78rem;
-    color:var(--graphite-soft);
-  }
-  @media (max-width:640px){
-    .spectable{ grid-template-columns:1fr; }
-  }
+  .spectable li span.v{ font-family:'IBM Plex Mono', monospace; font-size:0.78rem; color:var(--graphite-soft); }
+  @media (max-width:640px){ .spectable{ grid-template-columns:1fr; } }
 
   /* ---------- Experience ---------- */
+  .exp-block{ margin-bottom:26px; }
+  .exp-block:last-child{ margin-bottom:0; }
   .exp-head{
     display:flex;
     justify-content:space-between;
@@ -240,37 +283,20 @@
   }
   .exp-head h3{ margin:0; font-size:1.12rem; font-weight:600; }
   .exp-head .dates{ font-size:0.78rem; color:var(--graphite-soft); }
-  .exp ul{ margin:0; padding-left:20px; color:var(--graphite-soft); font-size:0.94rem; }
-  .exp li{ margin-bottom:8px; }
+  .exp-block ul{ margin:0; padding-left:20px; color:var(--graphite-soft); font-size:0.94rem; }
+  .exp-block li{ margin-bottom:8px; }
 
   /* ---------- Footer / contact ---------- */
   footer{
     border-top:1.5px solid var(--graphite);
     padding:30px 0 50px 0;
     margin-top:10px;
+    position:relative;
   }
-  .contact-grid{
-    display:flex;
-    justify-content:space-between;
-    flex-wrap:wrap;
-    gap:20px;
-  }
-  .contact-grid a{
-    display:block;
-    text-decoration:none;
-    font-size:0.95rem;
-    margin-bottom:6px;
-  }
-  .contact-grid .label{
-    font-size:0.72rem;
-    color:var(--graphite-soft);
-    margin-bottom:8px;
-  }
-  .footnote{
-    margin-top:26px;
-    font-size:0.72rem;
-    color:var(--graphite-soft);
-  }
+  .contact-grid{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:20px; }
+  .contact-grid a{ display:block; text-decoration:none; font-size:0.95rem; margin-bottom:6px; }
+  .contact-grid .label{ font-size:0.72rem; color:var(--graphite-soft); margin-bottom:8px; }
+  .footnote{ margin-top:26px; font-size:0.72rem; color:var(--graphite-soft); }
 </style>
 </head>
 <body>
@@ -279,41 +305,38 @@
   <span class="tick tl" aria-hidden="true"></span>
   <span class="tick tr" aria-hidden="true"></span>
 
+  <nav class="nav" aria-label="Main navigation">
+    <a href="#projects">Projects</a>
+    <a href="#skills">Coursework</a>
+    <a href="#experience">Experience</a>
+    <a class="primary" href="#contact">Contact</a>
+  </nav>
+
   <div class="titleblock">
     <div>
-      <h1>Aaron <span style="color:var(--graphite-soft); font-weight:400;">Hernandez</span></h1>
-      <div class="role">Mechanical Engineering Student — CCNY</div>
+      <h1 id="person-name">&nbsp;</h1>
+      <div class="role" id="person-role"></div>
     </div>
     <div class="meta mono">
-      <div>SHEET <span>01 / 01</span></div>
-      <div>REV <span>2026</span></div>
-      <div>LOCATION <span>New York, NY</span></div>
+      <div>SHEET <span id="person-sheet"></span></div>
+      <div>REV <span id="person-rev"></span></div>
+      <div>LOCATION <span id="person-location"></span></div>
     </div>
   </div>
 
   <!-- ---------- HERO ---------- -->
   <div class="hero">
     <div>
-      <p>I build and analyze mechanical systems — from thermodynamic cycle work in the classroom to automation tools that run on their own. Currently studying mechanical engineering at CCNY, with a working habit of documenting, measuring, and shipping things properly.</p>
-      <div class="stat-row">
-        <div class="stat">
-          <div class="num mono">4</div>
-          <div class="label">Core courses this term</div>
-        </div>
-        <div class="stat">
-          <div class="num mono">3</div>
-          <div class="label">Automation builds shipped</div>
-        </div>
-        <div class="stat">
-          <div class="num mono">1099</div>
-          <div class="label">Contractor experience</div>
-        </div>
+      <p id="hero-intro"></p>
+      <div class="hero-actions">
+        <a class="button primary" href="#projects">View Projects</a>
+        <a class="button secondary" href="#contact">Get In Touch</a>
       </div>
+      <div class="stat-row" id="hero-stats"></div>
     </div>
 
     <div class="hero-figure" aria-hidden="true">
       <svg viewBox="0 0 320 260" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <!-- turbocharger-style cross-section, abstracted -->
         <circle class="draw-line" cx="160" cy="120" r="70" stroke="#24476B" stroke-width="1.6"/>
         <circle class="draw-line d2" cx="160" cy="120" r="38" stroke="#1B1E24" stroke-width="1.6"/>
         <circle cx="160" cy="120" r="6" fill="#C1571F"/>
@@ -334,58 +357,7 @@
       <h2>Projects</h2>
       <span class="tag mono">SELECTED WORK</span>
     </div>
-
-    <div class="project">
-      <div>
-        <h3>Turbocharger Thermodynamic Analysis</h3>
-        <p>Term paper examining turbocharger performance through exergy and entropy analysis, working through T-s and P-v diagrams and steam-table interpolation to characterize real-cycle losses.</p>
-        <a class="link" href="#">View writeup →</a>
-      </div>
-      <div class="spec">
-        <div><span class="k">Course:</span> Thermodynamics, ENGR 230</div>
-        <div><span class="k">Method:</span> Exergy / entropy analysis</div>
-        <div><span class="k">Reference:</span> Çengel &amp; Boles</div>
-      </div>
-    </div>
-
-    <div class="project">
-      <div>
-        <h3>Customer Pricing Analyzer</h3>
-        <p>n8n workflow that reads live customer data from Google Sheets, runs pricing analysis, and sends formatted HTML summary emails automatically — no manual pull required.</p>
-        <a class="link" href="#">View workflow →</a>
-      </div>
-      <div class="spec">
-        <div><span class="k">Stack:</span> n8n, Google Sheets, Gmail</div>
-        <div><span class="k">Trigger:</span> Scheduled</div>
-        <div><span class="k">Output:</span> HTML email report</div>
-      </div>
-    </div>
-
-    <div class="project">
-      <div>
-        <h3>F1 Race Prediction Emailer</h3>
-        <p>Automated prediction pipeline pulling live race data from the Jolpica/Ergast API, generating a written forecast with an AI model, and emailing it ahead of each race weekend.</p>
-        <a class="link" href="#">View workflow →</a>
-      </div>
-      <div class="spec">
-        <div><span class="k">Stack:</span> n8n, Jolpica API, Groq</div>
-        <div><span class="k">Cadence:</span> Weekly, race-linked</div>
-        <div><span class="k">Output:</span> Email forecast</div>
-      </div>
-    </div>
-
-    <div class="project">
-      <div>
-        <h3>Statics — Force &amp; Load Studies</h3>
-        <p>Coursework set covering force-couple systems, distributed loads, and centroid calculations via the Pappus-Guldinus theorems, applied to multi-body static equilibrium problems.</p>
-        <a class="link" href="#">View select problems →</a>
-      </div>
-      <div class="spec">
-        <div><span class="k">Course:</span> Statics, ME 24600</div>
-        <div><span class="k">Topics:</span> Centroids, distributed loads</div>
-        <div><span class="k">Tool:</span> TI-Nspire CX</div>
-      </div>
-    </div>
+    <div id="projects-list"></div>
   </section>
 
   <!-- ---------- SKILLS ---------- -->
@@ -394,27 +366,14 @@
       <h2>Coursework &amp; Tools</h2>
       <span class="tag mono">SPEC SHEET</span>
     </div>
-
     <div class="spectable">
       <div>
         <h4>ENGINEERING</h4>
-        <ul>
-          <li>Thermodynamics <span class="v">CYCLES · EXERGY</span></li>
-          <li>Statics <span class="v">EQUILIBRIUM</span></li>
-          <li>Physics 208 <span class="v">OPTICS · CIRCUITS</span></li>
-          <li>Multivariable Calculus <span class="v">VECTOR FIELDS</span></li>
-          <li>Fluid Statics <span class="v">MANOMETRY</span></li>
-        </ul>
+        <ul id="skills-engineering"></ul>
       </div>
       <div>
         <h4>TOOLS &amp; AUTOMATION</h4>
-        <ul>
-          <li>n8n <span class="v">WORKFLOWS</span></li>
-          <li>Google Sheets / Gmail API <span class="v">INTEGRATION</span></li>
-          <li>SerpAPI <span class="v">DATA</span></li>
-          <li>TI-Nspire CX <span class="v">CALC</span></li>
-          <li>Word / Technical Writing <span class="v">DOCUMENTATION</span></li>
-        </ul>
+        <ul id="skills-tools"></ul>
       </div>
     </div>
   </section>
@@ -425,45 +384,139 @@
       <h2>Professional Experience</h2>
       <span class="tag mono">FIELD WORK</span>
     </div>
-
-    <div class="exp">
-      <div class="exp-head">
-        <h3>Sales Representative — Aptive Environmental</h3>
-        <div class="dates mono">Hawthorne &amp; Rockland County, NY</div>
-      </div>
-      <ul>
-        <li>Manage a full door-to-door sales territory independently, from prospecting through close, in a role that runs entirely on self-set daily targets.</li>
-        <li>Communicate technical service details to homeowners clearly and under time pressure — the same skill that carries over to writing up engineering results for a non-specialist reader.</li>
-        <li>Prior 1099 contractor experience, with working familiarity with self-employment tax and ownership of your own performance.</li>
-      </ul>
-    </div>
+    <div id="experience-list"></div>
   </section>
 
   <!-- ---------- CONTACT / FOOTER ---------- -->
-  <footer>
+  <footer id="contact">
     <span class="tick bl" aria-hidden="true"></span>
     <span class="tick br" aria-hidden="true"></span>
     <div class="contact-grid">
       <div>
         <div class="label mono">EMAIL</div>
-        <a href="mailto:your.email@example.com">your.email@example.com</a>
+        <a id="contact-email" href="#"></a>
       </div>
       <div>
         <div class="label mono">LINKEDIN</div>
-        <a href="#">linkedin.com/in/yourname</a>
+        <a id="contact-linkedin" href="#" target="_blank" rel="noreferrer"></a>
       </div>
       <div>
-        <div class="label mono">GITHUB</div>
-        <a href="#">github.com/yourname</a>
+        <div class="label mono">PHONE</div>
+        <a id="contact-phone" href="#"></a>
       </div>
       <div>
         <div class="label mono">RESUME</div>
-        <a href="#">Download PDF ↓</a>
+        <a id="contact-resume" href="#"></a>
       </div>
     </div>
-    <div class="footnote mono">DRAWN BY AARON · CCNY MECHANICAL ENGINEERING · 2026</div>
+    <div class="footnote mono" id="footnote"></div>
   </footer>
 </div>
+
+<!-- Content data (edit this file, not this one) -->
+<script src="content.js"></script>
+
+<!-- Render script — reads content.js and fills in the page. No need to edit this. -->
+<script>
+(function () {
+  const data = window.PORTFOLIO_DATA;
+  if (!data) {
+    document.body.innerHTML = "<p style='padding:40px;font-family:sans-serif;'>content.js failed to load. Make sure it's in the same folder as index.html.</p>";
+    return;
+  }
+
+  document.title = data.pageTitle || "Portfolio";
+  document.getElementById('page-title').textContent = data.pageTitle || "Portfolio";
+  document.getElementById('page-description').setAttribute('content', data.pageDescription || "");
+
+  const p = data.person || {};
+  document.getElementById('person-name').textContent = (p.firstName || "") + " " + (p.lastName || "");
+  document.getElementById('person-role').textContent = p.role || "";
+  document.getElementById('person-sheet').textContent = p.sheet || "";
+  document.getElementById('person-rev').textContent = p.rev || "";
+  document.getElementById('person-location').textContent = p.location || "";
+
+  const hero = data.hero || {};
+  document.getElementById('hero-intro').textContent = hero.intro || "";
+  const statRow = document.getElementById('hero-stats');
+  (hero.stats || []).forEach(function (s) {
+    const div = document.createElement('div');
+    div.className = 'stat';
+    div.innerHTML = '<div class="num mono">' + s.num + '</div><div class="label">' + s.label + '</div>';
+    statRow.appendChild(div);
+  });
+
+  const projectsList = document.getElementById('projects-list');
+  (data.projects || []).forEach(function (proj) {
+    const div = document.createElement('div');
+    div.className = 'project';
+    const mediaHtml = proj.imageSrc
+      ? '<img src="' + proj.imageSrc + '" alt="' + (proj.imageAlt || proj.title) + '">'
+      : '<div class="placeholder">Project image</div>';
+    const specHtml = (proj.spec || []).map(function (s) {
+      return '<div><span class="k">' + s.k + ':</span> ' + s.v + '</div>';
+    }).join('');
+    div.innerHTML =
+      '<div class="project-main">' +
+        '<div class="project-media">' + mediaHtml + '</div>' +
+        '<div>' +
+          '<h3>' + proj.title + '</h3>' +
+          '<p>' + proj.description + '</p>' +
+          '<a class="link" href="' + (proj.linkHref || '#') + '">' + (proj.linkText || 'View →') + '</a>' +
+        '</div>' +
+      '</div>' +
+      '<div class="spec">' + specHtml + '</div>';
+    projectsList.appendChild(div);
+  });
+
+  function renderSkillList(el, items) {
+    (items || []).forEach(function (item) {
+      const li = document.createElement('li');
+      li.innerHTML = '<span>' + item.label + '</span><span class="v">' + item.tag + '</span>';
+      el.appendChild(li);
+    });
+  }
+  const skills = data.skills || {};
+  renderSkillList(document.getElementById('skills-engineering'), skills.engineering);
+  renderSkillList(document.getElementById('skills-tools'), skills.tools);
+
+  const expList = document.getElementById('experience-list');
+  (data.experience || []).forEach(function (exp) {
+    const div = document.createElement('div');
+    div.className = 'exp-block';
+    const bulletsHtml = (exp.bullets || []).map(function (b) {
+      return '<li>' + b + '</li>';
+    }).join('');
+    div.innerHTML =
+      '<div class="exp-head">' +
+        '<h3>' + exp.title + '</h3>' +
+        '<div class="dates mono">' + exp.dates + '</div>' +
+      '</div>' +
+      '<ul>' + bulletsHtml + '</ul>';
+    expList.appendChild(div);
+  });
+
+  const contact = data.contact || {};
+  const emailEl = document.getElementById('contact-email');
+  emailEl.textContent = contact.email || "";
+  emailEl.href = "mailto:" + (contact.email || "");
+
+  const linkedinEl = document.getElementById('contact-linkedin');
+  linkedinEl.textContent = (contact.linkedin || {}).text || "";
+  linkedinEl.href = (contact.linkedin || {}).href || "#";
+
+  const phoneEl = document.getElementById('contact-phone');
+  phoneEl.textContent = (contact.phone || {}).text || "";
+  phoneEl.href = (contact.phone || {}).href || "#";
+
+  const resumeEl = document.getElementById('contact-resume');
+  resumeEl.textContent = (contact.resume || {}).text || "";
+  resumeEl.href = (contact.resume || {}).href || "#";
+
+  document.getElementById('footnote').textContent =
+    'DRAWN BY ' + (p.firstName || '').toUpperCase() + ' · CCNY MECHANICAL ENGINEERING · ' + (p.rev || '');
+})();
+</script>
 
 </body>
 </html>
